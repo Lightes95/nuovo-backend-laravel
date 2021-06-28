@@ -11,10 +11,12 @@ class CreateForeignkeyTable extends Migration
      *
      * @return void
      */
-    public function up() {
+    public function up()
+    {
         Schema::table('books', function (Blueprint $table) {
             $table->foreign('publisher_id')->references('id')->on('publishers')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('authors_id')->references('id')->on('authors')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('author_id')->references('id')->on('authors')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('topic_id')->references('id')->on('topics')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

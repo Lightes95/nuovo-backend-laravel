@@ -227,25 +227,11 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'type'         => 'navbar-search',
-            'text'         => 'search',        // Placeholder for the underlying input.
-            'topnav_right' => true,            // Or "topnav => true" to place on the left.
-            'url'          => 'navbar/search', // The url used to submit the data ('#' by default).
-            'method'       => 'post',          // 'get' or 'post' ('get' by default).
-            'input_name'   => 'searchVal',     // Name for the underlying input ('adminlteSearch' by default).
-            'id'           => 'navbarSearch'   // ID attribute for the underlying input (optional).
-        ],
-        [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',           // Placeholder for the underlying input.
-            'id'   => 'sidebarMenuSearch' // ID attribute for the underlying input (optional).
-        ],
         [
             'text'        => 'Dashboard',
             'url'         => 'admin',
@@ -270,7 +256,7 @@ return [
         ],
         [
             'text'        => 'Editori',
-            'url'         => 'admin/publisher',
+            'url'         => 'admin/publishers',
         ],
         [
             'text'        => 'Argomenti',
@@ -314,21 +300,21 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => true,
+            'active' => false,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => true,
+                    'asset' => false,
                     'location' => 'vendor/datatables/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
-                    'asset' => true,
+                    'asset' => false,
                     'location' => 'vendor/datatables/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => true,
+                    'asset' => false,
                     'location' => 'vendor/datatables/css/dataTables.bootstrap4.min.css',
                 ],
             ],

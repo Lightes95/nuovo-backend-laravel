@@ -9,15 +9,22 @@ class Book extends Model
 {
     use HasFactory;
 
-    public function author() {
-        return $this->belongsToMany(Author::class);
+    public function author()
+    {
+        return $this->belongsToMany(Author::class, 'author_id');
     }
 
-    public function loan() {
+    public function loan()
+    {
         return $this->hasMany(Loan::class);
     }
 
-    public function publisher() {
+    public function publisher()
+    {
         return $this->hasOne(Publisher::class, 'publisher_id');
+    }
+    public function topic()
+    {
+        return $this->hasMany(Topic::class, 'topic_id');
     }
 }

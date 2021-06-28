@@ -1,24 +1,24 @@
 @extends('adminlte::page')
 
-@section('title', 'Registra Argomento')
+@section('title', 'Registra Utente')
 
 @section('content_header')
-<h1>Registra Argomento</h1>
+<h1>Registra Utente</h1>
 @endsection
 
 @section('content')
 <div class="container mt-3">
-    <form method="post" action="{{ route('topics.store') }}" enctype="multipart/form-data">
+    <form method="post" action="{{ route('users.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label>Nome</label>
             <input type="text" name="nome" class="form-control">
         </div>
         <div class="form-group">
-            <label>Sito Web</label>
-            <input type="text" name="sito_web" class="form-control">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control">
         </div>
-        <input type="submit" value="Salva editore" class="btn btn-primary">
+        <input type="submit" value="Salva utente" class="btn btn-primary">
     </form>
 </div>
 @endsection

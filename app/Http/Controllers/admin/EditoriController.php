@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Publisher;
+
 class EditoriController extends Controller
 {
     /**
@@ -13,10 +14,9 @@ class EditoriController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {     
-        $editore=Publisher::all();
-        return view('admin.publisher.editori',compact('editore'));
-      
+    {
+        $publishers = Publisher::all();
+        return view('admin.publishers.index', compact('publishers'));
     }
 
     /**
@@ -26,7 +26,7 @@ class EditoriController extends Controller
      */
     public function create()
     {
-        return view('admin.publisher.create');
+        return view('admin.publishers.create');
     }
 
     /**
@@ -37,12 +37,12 @@ class EditoriController extends Controller
      */
     public function store(Request $request)
     {
-        $editore=new Publisher;
+        $publishers = new Publisher;
 
-        $editore->nome=$request->nome;
-        $editore->sito_web=$request->sito_web;
-        $editore->save();
-        return redirect('admin/publisher');
+        $publishers->nome = $request->nome;
+        $publishers->sito_web = $request->sito_web;
+        $publishers->save();
+        return redirect('admin/publishers');
     }
 
     /**
@@ -64,8 +64,8 @@ class EditoriController extends Controller
      */
     public function edit($id)
     {
-        $editore=Publisher::find($id);
-        return view('admin.publisher.edit',compact('editore'));
+        $publishers = Publisher::find($id);
+        return view('admin.publishers.edit', compact('publishers'));
     }
 
     /**
@@ -77,11 +77,11 @@ class EditoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $editore = Publisher::find($id);
-        $editore->nome = $request->nome;
-        $editore->sito_web = $request->sito_web;
-        $editore->save();
-        return redirect('admin/publisher');
+        $publishers = Publisher::find($id);
+        $publishers->nome = $request->nome;
+        $publishers->sito_web = $request->sito_web;
+        $publishers->save();
+        return redirect('admin/publishers.update', compact('publishers'));
     }
 
     /**
@@ -92,8 +92,8 @@ class EditoriController extends Controller
      */
     public function destroy($id)
     {
-        $editore = Publisher::find($id);
-        $editore->delete();
-        return redirect('admin/publisher');
+        $publishers = Publisher::find($id);
+        $publishers->delete();
+        return redirect('admin/publishers');
     }
 }

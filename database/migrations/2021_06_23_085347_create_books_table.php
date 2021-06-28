@@ -18,11 +18,14 @@ class CreateBooksTable extends Migration
             $table->string('titolo', 200);
             $table->string('edizione');
             $table->string('luogo_edizione');
+            $table->integer('anno_edizione');
             $table->integer('isbn');
             $table->integer('isbn13');
             $table->integer('copie');
             $table->unsignedBigInteger('publisher_id');
-            $table->unsignedBigInteger('authors_id');
+            $table->unsignedBigInteger('author_id');
+            $table->unsignedBigInteger('topic_id');
+
             $table->timestamps();
         });
     }

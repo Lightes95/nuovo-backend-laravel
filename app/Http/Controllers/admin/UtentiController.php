@@ -17,7 +17,7 @@ class UtentiController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin.users.utenti', compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -27,7 +27,7 @@ class UtentiController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -38,7 +38,12 @@ class UtentiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $users = new User;
+
+        $users->nome = $request->nome;
+        $users->email = $request->email;
+        $users->save();
+        return redirect('admin/users');
     }
 
     /**
@@ -60,7 +65,8 @@ class UtentiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $users = User::find($id);
+        return view('admin.users.edit', compact('users'));
     }
 
     /**
@@ -72,7 +78,12 @@ class UtentiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $users = new User;
+
+        $users->nome = $request->nome;
+        $users->email = $request->email;
+        $users->save();
+        return redirect('admin.users.update', compact('users'));
     }
 
     /**
@@ -83,6 +94,8 @@ class UtentiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $users = User::find($id);
+        $users->delete();
+        return redirect('admin/users');
     }
 }

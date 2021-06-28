@@ -1,12 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
-
-@section('plugins.Datatables', true)
+@section('title', 'Registra Libro')
 
 @section('content_header')
-<h1>Dashboard</h1>
-@stop
+<h1>Registra Libro</h1>
+@endsection
 
 @section('content')
 <div class="container mt-3">
@@ -17,12 +15,12 @@
             <input type="text" name="titolo" class="form-control">
         </div>
         <div class="form-group">
-            <label>Edizione</label>
-            <input type="text" name="edizione"  class="form-control">
-        </div>
-        <div class="form-group">
             <label>Lugo Edizione</label>
             <input type="text" name="luogo_edizione" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Anno Edizione</label>
+            <input type="text" name="anno_edizione" class="form-control">
         </div>
         <div class="form-group">
             <label>Isbn</label>
@@ -47,7 +45,16 @@
         </div>
         <div class="form-group">
             <label>Autore</label>
-            <select class="form-control"  type="number" name="authors_id">
+            <select class="form-control" type="number" name="author_id">
+                <option>---</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Argomento</label>
+            <select class="form-control" type="number" name="topic_id">
                 <option>---</option>
                 <option>1</option>
                 <option>2</option>
@@ -57,8 +64,4 @@
         <input type="submit" value="Salva Post" class="btn btn-primary">
     </form>
 </div>
-@stop
-
-@section('js')
-
-@stop
+@endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Loan;
 
 class PrestitiController extends Controller
 {
@@ -14,7 +15,8 @@ class PrestitiController extends Controller
      */
     public function index()
     {
-        return view('admin.loans.prestiti');
+        $loans = Loan::all();
+        return view('admin.loans.index', compact('loans'));
     }
 
     /**
@@ -24,7 +26,7 @@ class PrestitiController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.loans.create');
     }
 
     /**
@@ -35,7 +37,14 @@ class PrestitiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $loans = new Loan;
+
+        $loans->prestato_il = $request->prestato_il;
+        $loans->restituito_il = $request->restituito_il;
+        $loans->book_id = $request->book_id;
+        $loans->user_id = $request->user_id;
+        $loans->save();
+        return redirect('admin/loans');
     }
 
     /**
@@ -57,7 +66,8 @@ class PrestitiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $loans = Loan::find($id);
+        return view('admin.loans.edit', compact('loans'));
     }
 
     /**
@@ -69,7 +79,14 @@ class PrestitiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $loans = new Loan;
+
+        $loans->prestato_il = $request->prestato_il;
+        $loans->restituito_il = $request->restituito_il;
+        $loans->book_id = $request->book_id;
+        $loans->user_id = $request->user_id;
+        $loans->save();
+        return redirect('admin.loans.update', compact('loans'));
     }
 
     /**
@@ -80,6 +97,8 @@ class PrestitiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $loans = Loan::find($id);
+        $loans->delete();
+        return redirect('admin/loans');
     }
 }

@@ -1,14 +1,14 @@
 @extends('adminlte::page')
 
-@section('title', 'Registra Argomento')
+@section('title', 'Registra Editore')
 
 @section('content_header')
-<h1>Registra Argomento</h1>
+<h1>Registra Editore</h1>
 @endsection
 
 @section('content')
 <div class="container mt-3">
-    <form method="post" action="{{ route('topics.store') }}" enctype="multipart/form-data">
+    <form method="post" action="{{ route('publishers.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label>Nome</label>

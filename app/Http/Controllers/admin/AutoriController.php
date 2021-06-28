@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-use App\Models\Author;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Author;
 
 class AutoriController extends Controller
 {
@@ -13,9 +14,9 @@ class AutoriController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {     
-        $autore=Author::all();
-        return view('admin.authors.autori',compact('autore'));
+    {
+        $authors = Author::all();
+        return view('admin.authors.index', compact('authors'));
     }
 
     /**
@@ -36,11 +37,11 @@ class AutoriController extends Controller
      */
     public function store(Request $request)
     {
-        $autore=new Author;
+        $authors = new Author;
 
-        $autore->nome=$request->nome;
-        $autore->cognome=$request->cognome;
-        $autore->save();
+        $authors->nome = $request->nome;
+        $authors->cognome = $request->cognome;
+        $authors->save();
         return redirect('admin/authors');
     }
 
@@ -63,8 +64,8 @@ class AutoriController extends Controller
      */
     public function edit($id)
     {
-        $autore=Author::find($id);
-        return view('admin.authors.edit',compact('autore'));
+        $authors = Author::find($id);
+        return view('admin.authors.edit', compact('authors'));
     }
 
     /**
@@ -76,11 +77,11 @@ class AutoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $autore = Author::find($id);
-        $autore->nome = $request->nome;
-        $autore->cognome = $request->cognome;
-        $autore->save();
-        return redirect('admin/authors');
+        $authors = Author::find($id);
+        $authors->nome = $request->nome;
+        $authors->cognome = $request->cognome;
+        $authors->save();
+        return redirect('admin.authors.update', compact('authors'));
     }
 
     /**
@@ -91,8 +92,8 @@ class AutoriController extends Controller
      */
     public function destroy($id)
     {
-        $autore = Author::find($id);
-        $autore->delete();
+        $authors = Author::find($id);
+        $authors->delete();
         return redirect('admin/authors');
     }
 }

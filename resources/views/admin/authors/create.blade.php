@@ -1,12 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
-
-@section('plugins.Datatables', true)
+@section('title', 'Registra Autore')
 
 @section('content_header')
-<h1>Dashboard</h1>
-@stop
+<h1>Registra Utente</h1>
+@endsection
 
 @section('content')
 <div class="container mt-3">
@@ -18,12 +16,9 @@
         </div>
         <div class="form-group">
             <label>Cognome</label>
-            <input type="text" name="cognome"  class="form-control">
+            <input type="text" name="cognome" class="form-control">
         </div>
-        <input type="submit" value="Salva autore"  class="btn btn-primary">
+        <input type="submit" value="Salva autore" class="btn btn-primary">
     </form>
-@stop
-
-@section('js')
-
-@stop
+</div>
+@endsection

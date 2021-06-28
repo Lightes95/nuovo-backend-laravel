@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Topics;
+use App\Models\Topic;
 
 class ArgomentiController extends Controller
 {
@@ -15,7 +15,8 @@ class ArgomentiController extends Controller
      */
     public function index()
     {
-        //
+        $topics = Topic::all();
+        return view('admin.topics.index', compact('topics'));
     }
 
     /**
@@ -25,7 +26,7 @@ class ArgomentiController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.topics.create');
     }
 
     /**
@@ -36,7 +37,11 @@ class ArgomentiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $topics = new Topic;
+
+        $topics->nome = $request->nome;
+        $topics->save();
+        return redirect('admin/topics');
     }
 
     /**
@@ -58,7 +63,8 @@ class ArgomentiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $topics = Topic::find($id);
+        return view('admin.topics.edit', compact('topics'));
     }
 
     /**
@@ -70,7 +76,11 @@ class ArgomentiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $topics = new Topic;
+
+        $topics->nome = $request->nome;
+        $topics->save();
+        return redirect('admin.topics.update', compact('topics'));
     }
 
     /**
@@ -81,6 +91,8 @@ class ArgomentiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $topics = Topic::find($id);
+        $topics->delete();
+        return redirect('admin/topics');
     }
 }
