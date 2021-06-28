@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Publisher;
 class EditoriController extends Controller
 {
     /**
@@ -13,8 +13,10 @@ class EditoriController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('admin.editori');
+    {     
+        $editore=Publisher::all();
+        return view('admin.publisher.editori',compact('editore'));
+      
     }
 
     /**
@@ -24,7 +26,7 @@ class EditoriController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.publisher.create');
     }
 
     /**
@@ -35,7 +37,12 @@ class EditoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $editore=new Publisher;
+
+        $editore->nome=$request->nome;
+        $editore->sito_web=$request->sito_web;
+        $editore->save();
+        return redirect('admin/publisher');
     }
 
     /**
@@ -57,7 +64,8 @@ class EditoriController extends Controller
      */
     public function edit($id)
     {
-        //
+        $editore=Publisher::find($id);
+        return view('admin.publisher.edit',compact('editore'));
     }
 
     /**
@@ -69,7 +77,11 @@ class EditoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $editore = Publisher::find($id);
+        $editore->nome = $request->nome;
+        $editore->sito_web = $request->sito_web;
+        $editore->save();
+        return redirect('admin/publisher');
     }
 
     /**
@@ -80,6 +92,8 @@ class EditoriController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $editore = Publisher::find($id);
+        $editore->delete();
+        return redirect('admin/publisher');
     }
 }

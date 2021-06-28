@@ -14,7 +14,7 @@ class PrestitiController extends Controller
      */
     public function index()
     {
-        return view('admin.prestiti');
+        return view('admin.loans.prestiti');
     }
 
     /**

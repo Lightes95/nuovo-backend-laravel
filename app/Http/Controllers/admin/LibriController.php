@@ -38,17 +38,17 @@ class LibriController extends Controller
     public function store(Request $request)
     {
         $books = new Book;
-        $books->id();
+        
         $books->titolo = $request->titolo;
         $books->edizione = $request->edizione;
-        $books->luogo_edizione = $request->luogo_edizone;
+        $books->luogo_edizione = $request->luogo_edizione;
         $books->isbn = $request->isbn;
         $books->isbn13 = $request->isbn13;
         $books->copie = $request->copie;
         $books->publisher_id = $request->publisher_id;
-        $books->topic_id = $request->topic_id;
+        $books->authors_id = $request->authors_id;
         $books->save();
-        return redirect('admin.books.store', compact('books'));
+        return redirect ('admin/books');
     }
 
     /**
@@ -84,7 +84,7 @@ class LibriController extends Controller
     public function update(Request $request, $id)
     {
         $books = new Book;
-        $books->id();
+        
         $books->titolo = $request->titolo;
         $books->edizione = $request->edizione;
         $books->luogo_edizione = $request->luogo_edizone;
@@ -92,7 +92,7 @@ class LibriController extends Controller
         $books->isbn13 = $request->isbn13;
         $books->copie = $request->copie;
         $books->publisher_id = $request->publisher_id;
-        $books->topic_id = $request->topic_id;
+        $books->authors_id = $request->authors_id;
         $books->save();
         return redirect('admin.books.update', compact('books'));
     }
@@ -107,6 +107,6 @@ class LibriController extends Controller
     {
         $books = Book::find($id);
         $books->delete();
-        return redirect('/books');
+        return redirect('admin/books');
     }
 }

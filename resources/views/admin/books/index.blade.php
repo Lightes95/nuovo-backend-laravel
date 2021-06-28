@@ -11,13 +11,12 @@
     <tr>
         <th>ID</th>
         <th>Titolo</th>
-        <th>Data Edizione</th>
         <th>Lugo Edizione</th>
         <th>Isbn</th>
         <th>Isbn13</th>
         <th>Copie</th>
         <th>Editore</th>
-        <th>Argomento</th>
+        <th>autore</th>
         <th>Action</th>
     </tr>
 
@@ -25,8 +24,16 @@
     <tr>
         <td>{{ $book->id }}</td>
         <td>{{ $book->titolo }}</td>
-        <td><a href="/books/{{ $books->id }}/edit" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-            <form method="post" action="{{ route('books.destroy',$books->id) }}">
+        <td>{{ $book->luogo_edizione }}</td>
+        <td>{{ $book->isbn}}</td>
+        <td>{{ $book->isbn13}}</td>
+        <td>{{ $book->copie}}</td>
+        <td>{{ $book->publisher_id }}</td>
+        <td>{{ $book->authors_id}}</td>
+    
+
+        <td><a href="books/{{ $book->id }}/edit" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+            <form method="post" action="{{ route('books.destroy',$book->id) }}">
                 @method('DELETE')
                 @csrf
                 <button type="submit" value="Elimina" class="btn btn-primary"><i class="fas fa-trash"></i>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-
+use App\Models\Author;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -13,8 +13,9 @@ class AutoriController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('admin.autori');
+    {     
+        $autore=Author::all();
+        return view('admin.authors.autori',compact('autore'));
     }
 
     /**
@@ -24,7 +25,7 @@ class AutoriController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.authors.create');
     }
 
     /**
@@ -35,7 +36,12 @@ class AutoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $autore=new Author;
+
+        $autore->nome=$request->nome;
+        $autore->cognome=$request->cognome;
+        $autore->save();
+        return redirect('admin/authors');
     }
 
     /**
@@ -57,7 +63,8 @@ class AutoriController extends Controller
      */
     public function edit($id)
     {
-        //
+        $autore=Author::find($id);
+        return view('admin.authors.edit',compact('autore'));
     }
 
     /**
@@ -69,7 +76,11 @@ class AutoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $autore = Author::find($id);
+        $autore->nome = $request->nome;
+        $autore->cognome = $request->cognome;
+        $autore->save();
+        return redirect('admin/authors');
     }
 
     /**
@@ -80,6 +91,8 @@ class AutoriController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $autore = Author::find($id);
+        $autore->delete();
+        return redirect('admin/authors');
     }
 }

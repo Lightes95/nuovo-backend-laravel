@@ -11,6 +11,7 @@
 @section('content')
 <div class="container mt-3">
     <form method="post" action="{{ route('books.store') }}" enctype="multipart/form-data">
+    
         @csrf
         <div class="form-group">
             <label>Titolo</label>
@@ -39,17 +40,17 @@
         <div class="form-group">
             <label>Editore</label>
             <select class="form-control" name="publisher_id" value="{{ $books->publisher_id }}">
-                <option>Alta</option>
-                <option>Medio</option>
-                <option>Basso</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
             </select>
         </div>
         <div class="form-group">
-            <label>Argomento</label>
-            <select class="form-control" name="topic_id" value="{{ $books->topic_id }}">
-                <option>Alta</option>
-                <option>Medio</option>
-                <option>Basso</option>
+            <label>autore</label>
+            <select class="form-control" name="authors_id" value="{{ $books->authors_id }}">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
             </select>
         </div>
         <input type="submit" value="Salva Post" class="btn btn-primary">

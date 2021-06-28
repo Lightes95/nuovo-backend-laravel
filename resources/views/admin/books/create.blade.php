@@ -17,8 +17,8 @@
             <input type="text" name="titolo" class="form-control">
         </div>
         <div class="form-group">
-            <label>Data Edizione</label>
-            <input type="text" name="edizione" class="form-control">
+            <label>Edizione</label>
+            <input type="text" name="edizione"  class="form-control">
         </div>
         <div class="form-group">
             <label>Lugo Edizione</label>
@@ -40,18 +40,18 @@
             <label>Editore</label>
             <select class="form-control" name="publisher_id">
                 <option>---</option>
-                <option>Alta</option>
-                <option>Medio</option>
-                <option>Basso</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
             </select>
         </div>
         <div class="form-group">
-            <label>Argomento</label>
-            <select class="form-control" name="topic_id">
+            <label>Autore</label>
+            <select class="form-control"  type="number" name="authors_id">
                 <option>---</option>
-                <option>Alta</option>
-                <option>Medio</option>
-                <option>Basso</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
             </select>
         </div>
         <input type="submit" value="Salva Post" class="btn btn-primary">

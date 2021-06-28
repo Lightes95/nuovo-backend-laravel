@@ -254,11 +254,11 @@ return [
         ],
         [
             'text'        => 'Utenti',
-            'url'         => 'admin/utenti',
+            'url'         => 'admin/users',
         ],
         [
             'text'        => 'Prestiti',
-            'url'         => 'admin/prestiti',
+            'url'         => 'admin/loans',
         ],
         [
             'text'        => 'Libri',
@@ -266,11 +266,15 @@ return [
         ],
         [
             'text'        => 'Autori',
-            'url'         => 'admin/autori',
+            'url'         => 'admin/authors',
         ],
         [
             'text'        => 'Editori',
-            'url'         => 'admin/editori',
+            'url'         => 'admin/publisher',
+        ],
+        [
+            'text'        => 'Argomenti',
+            'url'         => 'admin/topics',
         ],
     ],
 

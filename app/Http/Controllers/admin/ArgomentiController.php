@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Http\Controllers\Controller;
+use App\Models\Topics;
 
-
-class UtentiController extends Controller
+class ArgomentiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,7 @@ class UtentiController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('admin.users.utenti', compact('users'));
+        //
     }
 
     /**

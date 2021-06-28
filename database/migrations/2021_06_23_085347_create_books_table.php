@@ -22,7 +22,7 @@ class CreateBooksTable extends Migration
             $table->integer('isbn13');
             $table->integer('copie');
             $table->unsignedBigInteger('publisher_id');
-            $table->unsignedBigInteger('topic_id');
+            $table->unsignedBigInteger('authors_id');
             $table->timestamps();
         });
     }
