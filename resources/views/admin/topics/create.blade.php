@@ -14,10 +14,6 @@
             <label>Nome</label>
             <input type="text" name="nome" class="form-control">
         </div>
-        <div class="form-group">
-            <label>Sito Web</label>
-            <input type="text" name="sito_web" class="form-control">
-        </div>
         <input type="submit" value="Salva editore" class="btn btn-primary">
     </form>
 </div>

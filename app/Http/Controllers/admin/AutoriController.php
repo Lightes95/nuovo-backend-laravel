@@ -81,7 +81,7 @@ class AutoriController extends Controller
         $authors->nome = $request->nome;
         $authors->cognome = $request->cognome;
         $authors->save();
-        return redirect('admin.authors.update', compact('authors'));
+        return redirect('admin/authors');
     }
 
     /**

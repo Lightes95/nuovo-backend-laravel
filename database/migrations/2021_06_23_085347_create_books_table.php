@@ -16,7 +16,6 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('titolo', 200);
-            $table->string('edizione');
             $table->string('luogo_edizione');
             $table->integer('anno_edizione');
             $table->integer('isbn');
@@ -25,7 +24,6 @@ class CreateBooksTable extends Migration
             $table->unsignedBigInteger('publisher_id');
             $table->unsignedBigInteger('author_id');
             $table->unsignedBigInteger('topic_id');
-
             $table->timestamps();
         });
     }

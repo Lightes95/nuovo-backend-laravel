@@ -81,7 +81,7 @@ class EditoriController extends Controller
         $publishers->nome = $request->nome;
         $publishers->sito_web = $request->sito_web;
         $publishers->save();
-        return redirect('admin/publishers.update', compact('publishers'));
+        return redirect('admin/publishers', compact('publishers'));
     }
 
     /**

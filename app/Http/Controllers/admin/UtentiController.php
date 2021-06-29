@@ -78,12 +78,11 @@ class UtentiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $users = new User;
-
+        $users = User::find($id);
         $users->nome = $request->nome;
         $users->email = $request->email;
         $users->save();
-        return redirect('admin.users.update', compact('users'));
+        return redirect('admin/users');
     }
 
     /**

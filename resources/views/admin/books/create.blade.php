@@ -20,7 +20,7 @@
         </div>
         <div class="form-group">
             <label>Anno Edizione</label>
-            <input type="text" name="anno_edizione" class="form-control">
+            <input type="number" name="anno_edizione" class="form-control">
         </div>
         <div class="form-group">
             <label>Isbn</label>

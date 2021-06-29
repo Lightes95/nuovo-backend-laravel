@@ -76,11 +76,10 @@ class ArgomentiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $topics = new Topic;
-
+        $topics = Topic::find($id);
         $topics->nome = $request->nome;
         $topics->save();
-        return redirect('admin.topics.update', compact('topics'));
+        return redirect('admin/topics');
     }
 
     /**

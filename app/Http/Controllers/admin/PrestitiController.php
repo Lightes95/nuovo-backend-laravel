@@ -79,14 +79,13 @@ class PrestitiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $loans = new Loan;
-
+        $loans = Loan::find($id);
         $loans->prestato_il = $request->prestato_il;
         $loans->restituito_il = $request->restituito_il;
         $loans->book_id = $request->book_id;
         $loans->user_id = $request->user_id;
         $loans->save();
-        return redirect('admin.loans.update', compact('loans'));
+        return redirect('admin/loans');
     }
 
     /**

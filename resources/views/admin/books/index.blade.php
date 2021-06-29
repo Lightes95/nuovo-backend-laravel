@@ -14,13 +14,14 @@
         <tr>
             <th>ID</th>
             <th>Titolo</th>
-            <th>Lugo Edizione</th>
+            <th>luogo_edizione</th>
             <th>Anno Edizione</th>
             <th>Isbn</th>
             <th>Isbn13</th>
             <th>Copie</th>
             <th>Editore</th>
             <th>autore</th>
+            <th>Argomento</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -34,8 +35,9 @@
             <td>{{ $book->isbn}}</td>
             <td>{{ $book->isbn13}}</td>
             <td>{{ $book->copie}}</td>
-            <td>{{ $book->publisher_id }}</td>
-            <td>{{ $book->authors_id}}</td>
+            <td>@foreach ($publishers as $publisher) @if ( $book->publisher_id==$publisher->id ) {{$publisher->nome}} @endif @endforeach</td>
+            <td>@foreach ($book->author as $autori) {{$autori->nome}} @endforeach</td>
+            <td>@foreach ($topics as $topic) @if ( $book->topic_id==$topic->id ) {{$topic->nome}}@endif @endforeach</td>
             <td>
                 <form method="post" action="{{ route('books.destroy',$book->id) }}">
                     @method('DELETE')

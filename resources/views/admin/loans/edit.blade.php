@@ -8,7 +8,8 @@
 
 @section('content')
 <div class="container mt-3">
-    <form method="post" action="{{ route('loans.store') }}" enctype="multipart/form-data">
+    <form method="post" action="{{ route('loans.update', $loans->id) }}" enctype="multipart/form-data">
+        @method('PUT')
         @csrf
         <<div class="form-group">
             <label>Prestato il</label>

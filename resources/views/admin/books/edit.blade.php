@@ -8,8 +8,8 @@
 
 @section('content')
 <div class="container mt-3">
-    <form method="post" action="{{ route('books.store') }}" enctype="multipart/form-data">
-
+    <form method="post" action="{{ route('books.update', $books->id) }}" enctype="multipart/form-data">
+        @method('PUT')
         @csrf
         <div class="form-group">
             <label>Titolo</label>
@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
             <label>Anno Edizione</label>
-            <input type="text" name="edizione" class="form-control" value="{{ $books->anno_edizione }}">
+            <input type="number" name="anno_edizione" class="form-control" value="{{ $books->anno_edizione }}">
         </div>
         <div class="form-group">
             <label>Isbn</label>

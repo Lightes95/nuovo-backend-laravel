@@ -5,6 +5,9 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Publisher;
+use App\Models\Author;
+use App\Models\Topic;
 
 class LibriController extends Controller
 {
@@ -15,8 +18,12 @@ class LibriController extends Controller
      */
     public function index()
     {
+        // $books = Book::find(2);
+        // $books->author()->attach(1);
         $books = Book::all();
-        return view('admin.books.index', compact('books'));
+        $publishers = Publisher::all();
+        $topics = Topic::all();
+        return view('admin.books.index', compact('books', 'publishers', 'topics'));
     }
 
     /**
@@ -38,17 +45,17 @@ class LibriController extends Controller
     public function store(Request $request)
     {
         $books = new Book;
-        
         $books->titolo = $request->titolo;
-        $books->edizione = $request->edizione;
         $books->luogo_edizione = $request->luogo_edizione;
+        $books->anno_edizione = $request->anno_edizione;
         $books->isbn = $request->isbn;
         $books->isbn13 = $request->isbn13;
         $books->copie = $request->copie;
         $books->publisher_id = $request->publisher_id;
-        $books->authors_id = $request->authors_id;
+        $books->author_id = $request->author_id;
+        $books->topic_id = $request->topic_id;
         $books->save();
-        return redirect ('admin/books');
+        return redirect('admin/books');
     }
 
     /**
@@ -83,18 +90,18 @@ class LibriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $books = new Book;
-        
+        $books = Book::find($id);
         $books->titolo = $request->titolo;
-        $books->edizione = $request->edizione;
-        $books->luogo_edizione = $request->luogo_edizone;
+        $books->luogo_edizione = $request->luogo_edizione;
+        $books->anno_edizione = $request->anno_edizione;
         $books->isbn = $request->isbn;
         $books->isbn13 = $request->isbn13;
         $books->copie = $request->copie;
         $books->publisher_id = $request->publisher_id;
-        $books->authors_id = $request->authors_id;
+        $books->author_id = $request->author_id;
+        $books->topic_id = $request->topic_id;
         $books->save();
-        return redirect('admin.books.update', compact('books'));
+        return redirect('admin/books');
     }
 
     /**

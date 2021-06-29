@@ -8,7 +8,8 @@
 
 @section('content')
 <div class="container mt-3">
-    <form method="post" action="{{ route('authors.store') }}" enctype="multipart/form-data">
+    <form method="post" action="{{ route('authors.update', $authors->id) }}" enctype="multipart/form-data">
+        @method('PUT')
         @csrf
         <div class="form-group">
             <label>Nome</label>

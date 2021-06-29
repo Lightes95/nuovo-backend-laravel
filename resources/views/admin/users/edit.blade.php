@@ -8,7 +8,8 @@
 
 @section('content')
 <div class="container mt-3">
-    <form method="post" action="{{ route('users.store') }}" enctype="multipart/form-data">
+    <form method="post" action="{{ route('users.update', $users->id) }}" enctype="multipart/form-data">
+        @method('PUT')
         @csrf
         <div class="form-group">
             <label>Nome</label>
@@ -18,7 +19,7 @@
             <label>Email</label>
             <input type="email" name="email" class="form-control" value="{{ $users->email }}">
         </div>
-        <input type="submit" value="Salva utente" class="btn btn-primary" />
+        <input type="submit" value="Salva utente" class="btn btn-primary">
     </form>
 </div>
 @endsection
