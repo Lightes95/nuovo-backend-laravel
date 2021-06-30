@@ -36,7 +36,7 @@
             <td>{{ $book->isbn13}}</td>
             <td>{{ $book->copie}}</td>
             <td>@foreach ($publishers as $publisher) @if ( $book->publisher_id==$publisher->id ) {{$publisher->nome}} @endif @endforeach</td>
-            <td>@foreach ($book->author as $autori) {{$autori->nome}} @endforeach</td>
+            <td>@foreach ($author as $authors) @if ($book->author_id==$authors->id ){{$authors->nome}} @endif @endforeach</td>
             <td>@foreach ($topics as $topic) @if ( $book->topic_id==$topic->id ) {{$topic->nome}}@endif @endforeach</td>
             <td>
                 <form method="post" action="{{ route('books.destroy',$book->id) }}">

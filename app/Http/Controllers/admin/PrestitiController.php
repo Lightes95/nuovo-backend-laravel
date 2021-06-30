@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-
+use App\Models\Book;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Loan;
+use App\Models\User;
 
 class PrestitiController extends Controller
 {
@@ -14,9 +15,11 @@ class PrestitiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $users = User::all();
+        $books = Book::all();
         $loans = Loan::all();
-        return view('admin.loans.index', compact('loans'));
+        return view('admin.loans.index', compact('loans','users','books'));
     }
 
     /**
@@ -65,9 +68,11 @@ class PrestitiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {     
+        $users = User::all();
+        $books = Book::all();
         $loans = Loan::find($id);
-        return view('admin.loans.edit', compact('loans'));
+        return view('admin.loans.edit', compact('loans','users','books'));
     }
 
     /**

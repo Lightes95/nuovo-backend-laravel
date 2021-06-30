@@ -37,26 +37,28 @@
         </div>
         <div class="form-group">
             <label>Editore</label>
-            <select class="form-control" name="publisher_id" value="{{ $books->publisher_id }}">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+            <select class="form-control" name="publisher_id" >
+                @foreach ($publishers as $publisher)
+                <option value="{{ $publisher->id }}">{{ $publisher->nome }}</option>
+               @endforeach
             </select>
         </div>
+
         <div class="form-group">
             <label>autore</label>
-            <select class="form-control" name="author_id" value="{{ $books->author_id }}">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+            <select class="form-control" name="author_id" >
+                @foreach ($authors as $author)
+                 <option value="{{ $author->id }}">{{ $author->nome }}</option>
+                @endforeach
             </select>
         </div>
+
         <div class="form-group">
-            <label>autore</label>
-            <select class="form-control" name="topic_id" value="{{ $books->topic_id }}">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+            <label>Argomento</label>
+            <select class="form-control" name="topic_id" >
+                @foreach ($topics as $topic)
+                 <option value="{{ $topic->id }}">{{ $topic->nome }}</option>
+                @endforeach
             </select>
         </div>
         <input type="submit" value="Salva Post" class="btn btn-primary">

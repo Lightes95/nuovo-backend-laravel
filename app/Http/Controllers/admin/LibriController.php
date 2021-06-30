@@ -17,13 +17,13 @@ class LibriController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        // $books = Book::find(2);
-        // $books->author()->attach(1);
+    {  
+      
         $books = Book::all();
+        $author=Author::all();
         $publishers = Publisher::all();
         $topics = Topic::all();
-        return view('admin.books.index', compact('books', 'publishers', 'topics'));
+        return view('admin.books.index', compact('books', 'publishers', 'topics','author'));
     }
 
     /**
@@ -32,8 +32,11 @@ class LibriController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('admin.books.create');
+    {   
+        $author=Author::all();
+        $publishers = Publisher::all();
+        $topics = Topic::all();
+        return view('admin.books.create', compact( 'publishers', 'topics','author'));
     }
 
     /**
@@ -78,7 +81,11 @@ class LibriController extends Controller
     public function edit($id)
     {
         $books = Book::find($id);
-        return view('admin.books.edit', compact('books'));
+        $authors=Author::all();
+        $topics=Topic::all();
+        $publishers=Publisher::all();
+
+        return view('admin.books.edit', compact('books','authors','topics','publishers'));
     }
 
     /**

@@ -36,29 +36,31 @@
         </div>
         <div class="form-group">
             <label>Editore</label>
-            <select class="form-control" name="publisher_id">
-                <option>---</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+            <select class="form-control" name="publisher_id" >
+                <option value="">seleziona l'editore</option>
+                @foreach ($publishers as $publisher)
+                <option value="{{ $publisher->id }}">{{ $publisher->nome }}</option>
+               @endforeach
             </select>
         </div>
+
         <div class="form-group">
-            <label>Autore</label>
-            <select class="form-control" type="number" name="author_id">
-                <option>---</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+            <label>autore</label>
+            <select class="form-control" name="author_id" >
+                <option value="">seleziona l'autore</option>
+                @foreach ($author as $authors)
+                 <option value="{{ $authors->id }}">{{ $authors->nome }}</option>
+                @endforeach
             </select>
         </div>
+
         <div class="form-group">
             <label>Argomento</label>
-            <select class="form-control" type="number" name="topic_id">
-                <option>---</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+            <select class="form-control" name="topic_id" >
+                <option value="">seleziona l'argomento</option>
+                @foreach ($topics as $topic)
+                 <option value="{{ $topic->id }}">{{ $topic->nome }}</option>
+                @endforeach
             </select>
         </div>
         <input type="submit" value="Salva Post" class="btn btn-primary">

@@ -11,21 +11,29 @@
     <form method="post" action="{{ route('loans.update', $loans->id) }}" enctype="multipart/form-data">
         @method('PUT')
         @csrf
-        <<div class="form-group">
+        <div class="form-group">
             <label>Prestato il</label>
             <input type="date" name="prestato_il" class="form-control" value="{{ $loans->prestato_il }}">
-            </>
+        </div>
             <div class="form-group">
                 <label>Restituito il</label>
                 <input type="date" name="restituito_il" class="form-control" value="{{ $loans->restituito_il }}">
             </div>
             <div class="form-group">
                 <label>Libro</label>
-                <input type="text" name="book_id" class="form-control" value="{{ $loans->book_id }}">
+                <select class="form-control" name="book_id" >
+                    @foreach ($books as $book)
+                     <option value="{{ $book->id }}">{{ $book->titolo }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <label>Utente</label>
-                <input type="text" name="user_id" class="form-control" value="{{ $loans->user_id }}">
+                <select class="form-control" name="user_id" >
+                    @foreach ($users as $user)
+                     <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <input type="submit" value="Salva prestito" class="btn btn-primary">
     </form>

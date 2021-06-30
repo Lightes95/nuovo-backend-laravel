@@ -4,9 +4,7 @@
 
 @section('title', 'Dashboard')
 
-@section('content_header')
-<a href="{{ route('loans.create') }}" type="button" class="btn btn-primary">Registra Prestito</a>
-@stop
+
 
 @section('content')
 <table id='tabella' class="table table-striped table-bordered" style="width:100%">
@@ -26,8 +24,8 @@
             <td>{{ $loan->id }}</td>
             <td>{{ $loan->prestato_il }}</td>
             <td>{{ $loan->restituito_il}}</td>
-            <td>{{ $loan->book_id }}</td>
-            <td>{{ $loan->user_id}}</td>
+            <td>@foreach ($books as $book) @if ($loan->book_id==$book->id ){{$book->titolo}} @endif @endforeach</td>
+            <td>@foreach ($users as $user) @if ( $loan->user_id==$user->id ) {{$user->name}}@endif @endforeach</td>
             <td>
                 <form method="post" action="{{ route('loans.destroy', $loan->id) }}">
                     @method('DELETE')
